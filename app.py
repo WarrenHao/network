@@ -27,6 +27,8 @@ import pandas as pd
 import glob
 import DataLoader
 from drawer import drawer
+import os
+
 
 
 dl = DataLoader.Dataloader()
@@ -95,6 +97,8 @@ tweets_with_source_link_source_user_info['created_at'] = pd.to_datetime(tweets_w
 '''
 if st.button('绘制事件传播网络图'):
     c = drawer(tweets_with_source_link_source_user_info, INPUT_TASK['KEYWORDS'][0])
+    chart_name = INPUT_TASK['KEYWORDS'][0]
+    c.render(f'./Echarts/{chart_name}传播网络图.html')
     
     # 把网络图对象渲染到 Streamlit
     streamlit_echarts.st_pyecharts(
@@ -180,7 +184,7 @@ if st.button('运行模拟'):
     graph.set_global_opts(title_opts=opts.TitleOpts(title="Dynamic SIR Model on Network"))
     graph.set_series_opts(label_opts=opts.LabelOpts(is_show=False))
 
-
+    graph.render('./Echarts/SIR模型传播网络图.html')
     streamlit_echarts.st_pyecharts(graph, height=500, width=1000)
 
 
@@ -199,5 +203,5 @@ if st.button('运行模拟'):
     line_chart.set_global_opts(title_opts=opts.TitleOpts(title="SIR Model Future Trend Prediction"),
                                datazoom_opts=opts.DataZoomOpts())  # 启用数据缩放功能)
     # 增加缩放功能
-
+    line_chart.render('./Echarts/SIR模型传播趋势图.html')
     streamlit_echarts.st_pyecharts(line_chart, height=500, width=1000)
