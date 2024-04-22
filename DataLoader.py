@@ -18,7 +18,7 @@ class Dataloader:
     
 
     def load_newest_file(self, file_index:str):
-        files = glob.glob(f'./WeiboSpider/output/*{file_index}*.jsonl')
+        files = glob.glob(f'./SpiderWeibo/output/*{file_index}*.jsonl')
         files.sort()
         file_path = files[-1]
         return self.jsonl_2_dataframe(file_path)

@@ -21,7 +21,7 @@ from pyecharts import options as opts
 from pyecharts.commons.utils import JsCode
 import numpy as np
 import streamlit_echarts
-from WeiboSpider.weibospider.config import INPUT_TASK
+from SpiderWeibo.weibospider.config import INPUT_TASK
 
 import pandas as pd
 import glob
